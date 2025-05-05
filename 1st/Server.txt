@@ -11,3 +11,13 @@ public class Server {
         }
     }
 }
+
+
+//javac ServerIntf.java
+//javac ServerImpl.java
+//javac Server.java
+//javac Client.java
+
+start rmiregistry
+java Server
+java Client
