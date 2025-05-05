@@ -1,0 +1,13 @@
+import java.rmi.*;
+
+public class Server {
+    public static void main(String args[]) {
+        try {
+            ServerImpl obj = new ServerImpl();
+            Naming.rebind("Calculator", obj);
+            System.out.println("Server is ready...");
+        } catch (Exception e) {
+            System.out.println("Server error: " + e);
+        }
+    }
+}

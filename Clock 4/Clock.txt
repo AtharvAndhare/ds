@@ -1,0 +1,83 @@
+import java.util.*;
+import java.text.SimpleDateFormat;
+import java.text.ParseException;
+
+public class Main{
+	
+	
+	public static void balgo(String m, String s1, String s2,String s3){
+		System.out.println("--------------------");
+		System.out.println("Initial times : ");
+		System.out.println("Master  : "+m);
+		System.out.println("Slave1 : "+s1);
+		System.out.println("Slave2 : "+s2);
+		System.out.println("Slave3 : "+s3);
+		System.out.println("--------------------");
+		
+		
+		SimpleDateFormat sdf= new SimpleDateFormat("mm:ss");
+		try{
+		long mog= sdf.parse(m).getTime()/1000;
+			System.out.println("atharav "+ mog);
+		long s1og= sdf.parse(s1).getTime()/1000;
+		long s2og= sdf.parse(s2).getTime()/1000;
+		long s3og=sdf.parse(s3).getTime()/1000;
+		
+		long s1diff= s1og-mog;
+		long s2diff= s2og-mog;
+		long s3diff= s3og-mog;
+		
+		System.out.println("--------------------");
+		System.out.println("Time Difference wrt master : ");
+		System.out.println("Master  : 0");
+		System.out.println("Slave1 : "+s1diff);
+		System.out.println("Slave2 : "+s2diff);
+		System.out.println("Slave3 : "+s3diff);
+		System.out.println("--------------------");
+		
+		long ft= (0+s1diff+s2diff+s3diff)/4;
+		
+		System.out.println("--------------------");
+		System.out.println("Average Fault Tolerence : "+ft);
+		System.out.println("--------------------");
+		
+		long madj= ft-0;
+		long s1adj= ft-s1diff;
+		long s2adj= ft- s2diff;
+		long s3adj= ft-s3diff;
+		
+		System.out.println("--------------------");
+		System.out.println("Adjustments to be done  : ");
+		System.out.println("Master  : "+madj);
+		System.out.println("Slave1 : "+s1adj);
+		System.out.println("Slave2 : "+s2adj);
+		System.out.println("Slave3 : "+s3adj);
+		System.out.println("--------------------");
+		
+		
+		long mn=mog+madj;
+		long s1n= s1og+s1adj;
+		long s2n= s2og+s2adj;
+		long s3n= s3og+s3adj;
+		
+		System.out.println("--------------------");
+		System.out.println("Final adjusted times  : ");
+		System.out.println("Master  : "+ sdf.format(new Date(mn*1000)));
+		System.out.println("Slave1 : "+sdf.format(new Date(s1n*1000)));
+		System.out.println("Slave2 : "+sdf.format(new Date(s2n*1000)));
+		System.out.println("Slave3 : "+sdf.format(new Date(s3n*1000)));
+		System.out.println("--------------------");
+		
+		
+		}
+		
+		catch(ParseException e){
+			e.printStackTrace();
+		}
+			
+	}
+
+	public static void main(String args[]){
+		balgo("3:00","3:10", "2:50", "3:20");
+	}
+}

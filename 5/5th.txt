@@ -1,0 +1,52 @@
+import java.util.*;
+
+public class tokenring{
+	public static void main(String args[]) throws Throwable{
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Enter the number of nodes : ");
+		System.out.print(" ");
+		int n= sc.nextInt();
+		for(int i=0; i<n; i++){
+			System.out.print(i+" ");
+		}
+		System.out.print("0");
+		
+		int token=0;
+		int choice=1;
+		
+		do{
+		System.out.println("Enter the sender no : ");
+		int sender= sc.nextInt();
+		System.out.println("Enter the receiver no : ");
+		int receiver= sc.nextInt();
+		System.out.println("Enter the data : ");
+		int data= sc.nextInt();
+		
+		int i= token;
+		System.out.println("token passing as -->");
+		while(i!=sender){
+			System.out.print(i + "-> ");
+			i=(i+1)%n;
+		}
+		System.out.print(sender);
+		
+		
+		System.out.println("----> Sender "+sender+" sending the data : "+data);
+		
+		i= sender+1;
+		while(i!=receiver){
+			System.out.println("node "+i+" forwarded the data "+data);
+			i=(i+1)%n;
+		}
+		
+		System.out.println("----> Receiver "+receiver+" received the data : "+data);
+		
+		token= sender;
+		System.out.println("press 1 to continue else press any other number : ");
+		choice= sc.nextInt();
+		
+		}while(choice==1);
+		
+	}
+
+}
